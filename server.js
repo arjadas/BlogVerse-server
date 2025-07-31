@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { ServerApiVersion } from 'mongodb';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import Blog from './models/blogSchema.js';
 
@@ -12,6 +13,8 @@ const PORT = process.env.PORT;
 
 // Middlewares
 app.use(express.json()); // Parse JSON bodies from requests
+
+app.use(cors()); // Enable CORS for all routes
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI, {
